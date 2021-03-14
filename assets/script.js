@@ -130,17 +130,26 @@ function getArray(){
 };
 
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//FUNCTION TO TAKE NEW ARRAY AND PULL RANDOM ELEMENTS FROM IT FOR THE LENGTH OF THE PASSWORD
+function generate(){
+    var i;
+    var passStr = "";
+    for (i = 0; i < passLengthInt; i++) {
+      var randomChar = bigArray[Math.floor(Math.random()*bigArray.length)];
+      passChar = randomChar;
+      passStr += passChar;
+    };
+    document.getElementById('password').value = passStr;
+    alert("Please copy your password from the textbox below.  Refresh to generate a new one!")
+  }
+  
+  // Get references to the #generate element
+  var generateBtn = document.querySelector("#generate");
+  
+  function clickEvent(){
+  charSelect();
+  passLengthChooser();
+  getArray();
+  generate();
+  };
+  
